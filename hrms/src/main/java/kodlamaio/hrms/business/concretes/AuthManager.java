@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.AuthService;
+import kodlamaio.hrms.core.adapters.UserCheckService;
 import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
@@ -20,18 +21,27 @@ public class AuthManager implements AuthService{
 	private CandidateDao candidateDao;
 	private EmployerDao employerDao;
 	private EmployeeDao employeeDao;
+	private UserCheckService userCheckService;
 	
 	@Autowired
-	public AuthManager(CandidateDao candidateDao, EmployerDao employerDao, EmployeeDao employeeDao) {
+	public AuthManager(CandidateDao candidateDao, EmployerDao employerDao, EmployeeDao employeeDao, UserCheckService userCheckService) {
 		this.candidateDao = candidateDao;
 		this.employerDao = employerDao;
 		this.employeeDao = employeeDao;
+		this.userCheckService = userCheckService;
 	}
 
 	@Override
 	public Result registerCandidate(Candidate candidate) {
 		if(this.candidateDao.existsByEmail(candidate.getEmail())) {
 			return new ErrorResult("Email kullanılmaktadır.");
+		}
+		if(!this.userCheckService.checkIfRealPerson(candidate)) {
+			return new ErrorResult("Lütfen geçerli bir kullanıcı giriniz.");
+		}
+		
+		if(this.candidateDao.existsByIdentityNumber(candidate.getIdentityNumber())) {
+			return new ErrorResult("Geçersiz kimlik numarası!");
 		}
 		this.candidateDao.save(candidate);
 		return new SuccessResult("İş arayan kayıt edildi.");
