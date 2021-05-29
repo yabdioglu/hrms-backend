@@ -11,7 +11,7 @@ public interface JobAdvertisementService {
 	DataResult<List<JobAdvertisement>> getAll();
 	DataResult<List<JobAdvertisement>> getByIsActiveTrueAndEmployer_CompanyName(String companyName);
 	DataResult<List<JobAdvertisement>> getByIsActiveTrueOrderByCreatedDate();
-	// TODO : isActive eklenecek.
+	// TODO : isActive
 	
 
 }
