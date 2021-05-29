@@ -31,12 +31,12 @@ public class AuthController {
 	}
 	
 	@PostMapping("/registerEmployer")
-	public Result registerEmployer(@Valid @RequestBody Employer employer, String password2) {
+	public Result registerEmployer(@Valid @RequestBody Employer employer) {
 		return this.authService.registerEmployer(employer);
 	}
 	
 	@PostMapping("/registerEmployee")
-	public Result registerEmployee(@Valid @RequestBody Employee employee, String password2) {
+	public Result registerEmployee(@Valid @RequestBody Employee employee) {
 		return this.authService.registerEmployee(employee);
 	}
 	
