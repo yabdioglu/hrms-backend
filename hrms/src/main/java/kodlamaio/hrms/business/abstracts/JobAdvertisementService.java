@@ -13,5 +13,7 @@ public interface JobAdvertisementService {
 	DataResult<List<JobAdvertisement>> getByIsActiveTrueOrderByCreatedDate();
 	// TODO : isActive
 	
+	Result getIsActivity(int jobAdvertisementId);
+	
 
 }

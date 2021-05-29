@@ -51,17 +51,16 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 	}
 
 
-
-	
-
-
-
-
-
-
-
-
-
+	@Override
+	public Result getIsActivity(int jobAdvertisementId) {
+		JobAdvertisement jobAdvertisement = this.jobAdvertisementDao.getOne(jobAdvertisementId);
+		jobAdvertisement.setActive(!jobAdvertisement.isActive());;
+		this.jobAdvertisementDao.save(jobAdvertisement);
+		if(jobAdvertisement.isActive()) {
+			return new SuccessResult("İlan aktif duruma getirildi.");
+		}
+		return new SuccessResult("İlan pasif duruma getirildi.");
+	}
 
 	
 
