@@ -1,5 +1,7 @@
 package kodlamaio.hrms.entities.abstracts;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,8 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,13 +32,23 @@ public abstract class User {
 	@Column(name = "id")
 	private int id;
 	
-	@NotBlank(message = "Email cannot be empty")
+	@NotNull
+	@NotBlank
 	@Email
 	@Column(name = "email", unique = true)
 	private String email;
 	
-	@NotBlank(message = "Password cannot be empty")
+	@NotNull
+	@NotBlank
 	@Column(name = "password")
 	private String password;
+	
+	@NotNull
+	@NotBlank
+	@Transient
+	private String confirmPassword;
+	
+	@Column(name = "created_date")
+	private LocalDateTime createdDate = LocalDateTime.now();
 
 }

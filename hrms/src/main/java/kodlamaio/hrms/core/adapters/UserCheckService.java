@@ -1,8 +1,7 @@
 package kodlamaio.hrms.core.adapters;
 
-import kodlamaio.hrms.entities.concretes.Candidate;
-
+import kodlamaio.hrms.core.utilities.results.Result;
 public interface UserCheckService {
-	boolean checkIfRealPerson(Candidate candidate);
+	Result checkIfRealPerson(Long identityNumber, String firstName, String lastName, int birtDate);
 
 }

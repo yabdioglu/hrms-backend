@@ -44,9 +44,14 @@ public class JobAdvertisementsController {
 		return this.jobAdvertisementService.getByIsActiveTrueOrderByCreatedDate();
 	}
 	
-	@GetMapping("/getIsActivity")
+	@PostMapping("/getIsActivity")
 	public Result getIsActivity(@RequestParam int jobAdvertisementId) {
 		return this.jobAdvertisementService.getIsActivity(jobAdvertisementId);
+	}
+	
+	@GetMapping("/getAdvertisementWithEmployerDetails")
+	public Result getAdvertisementWithEmployerDetails() {
+		return this.jobAdvertisementService.getAdvertisementWithEmployerDetails();
 	}
 	
 

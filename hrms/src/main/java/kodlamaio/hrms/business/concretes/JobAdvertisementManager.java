@@ -1,6 +1,5 @@
 package kodlamaio.hrms.business.concretes;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,7 @@ import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.JobAdvertisementDao;
 import kodlamaio.hrms.entities.concretes.JobAdvertisement;
+import kodlamaio.hrms.entities.dtos.JobAdvertisementDto;
 
 @Service
 public class JobAdvertisementManager implements JobAdvertisementService{
@@ -32,7 +32,6 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 
 	@Override
 	public Result add(JobAdvertisement jobAdvertisement) {
-		jobAdvertisement.setCreatedDate(LocalDate.now());
 		this.jobAdvertisementDao.save(jobAdvertisement);
 		return new SuccessResult("İş ilanı eklendi.");
 	}
@@ -60,6 +59,12 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 			return new SuccessResult("İlan aktif duruma getirildi.");
 		}
 		return new SuccessResult("İlan pasif duruma getirildi.");
+	}
+
+
+	@Override
+	public DataResult<List<JobAdvertisementDto>> getAdvertisementWithEmployerDetails() {
+		return new SuccessDataResult<List<JobAdvertisementDto>>(this.jobAdvertisementDao.getAdvertisementWithEmployerDetails(), "Data listelendi.");
 	}
 
 	

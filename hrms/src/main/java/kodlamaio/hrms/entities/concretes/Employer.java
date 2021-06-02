@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -26,15 +27,18 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdvertisements"})
 public class Employer extends User {
 	
-	@NotBlank(message = "Company name cannot be empty")
+	@NotNull
+	@NotBlank
 	@Column(name = "company_name")
 	private String companyName;
 	
-	@NotBlank(message = "Web address cannot be empty")
+	@NotNull
+	@NotBlank
 	@Column(name = "web_address")
 	private String webAddress;
 	
-	@NotBlank(message = "Phone number cannot be empty")
+	@NotNull
+	@NotBlank
 	@Column(name = "phone_number")
 	private String phoneNumber;
 	

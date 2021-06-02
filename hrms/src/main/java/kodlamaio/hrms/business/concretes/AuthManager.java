@@ -4,13 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.AuthService;
-import kodlamaio.hrms.core.adapters.UserCheckService;
+import kodlamaio.hrms.business.abstracts.CandidateService;
+import kodlamaio.hrms.business.abstracts.EmployeeService;
+import kodlamaio.hrms.business.abstracts.EmployerService;
 import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.core.utilities.results.SuccessResult;
-import kodlamaio.hrms.dataAccess.abstracts.CandidateDao;
-import kodlamaio.hrms.dataAccess.abstracts.EmployeeDao;
-import kodlamaio.hrms.dataAccess.abstracts.EmployerDao;
 import kodlamaio.hrms.entities.concretes.Candidate;
 import kodlamaio.hrms.entities.concretes.Employee;
 import kodlamaio.hrms.entities.concretes.Employer;
@@ -18,52 +16,44 @@ import kodlamaio.hrms.entities.concretes.Employer;
 @Service
 public class AuthManager implements AuthService{
 
-	private CandidateDao candidateDao;
-	private EmployerDao employerDao;
-	private EmployeeDao employeeDao;
-	private UserCheckService userCheckService;
+	private EmployerService employerService;
+	private CandidateService candidateService;
+	private EmployeeService employeeService;
 	
 	@Autowired
-	public AuthManager(CandidateDao candidateDao, EmployerDao employerDao, EmployeeDao employeeDao, UserCheckService userCheckService) {
-		this.candidateDao = candidateDao;
-		this.employerDao = employerDao;
-		this.employeeDao = employeeDao;
-		this.userCheckService = userCheckService;
+	public AuthManager(EmployerService employerService, CandidateService candidateService,
+			EmployeeService employeeService) {
+		super();
+		this.employerService = employerService;
+		this.candidateService = candidateService;
+		this.employeeService = employeeService;
 	}
 
 	@Override
 	public Result registerCandidate(Candidate candidate) {
-		if(this.candidateDao.existsByEmail(candidate.getEmail())) {
-			return new ErrorResult("Email kullanılmaktadır.");
+		if(!candidate.getPassword().equals(candidate.getConfirmPassword())) {
+			return new ErrorResult("Şifreler uyuşmuyor!");
 		}
-		if(!this.userCheckService.checkIfRealPerson(candidate)) {
-			return new ErrorResult("Lütfen geçerli bir kullanıcı giriniz.");
-		}
-		
-		if(this.candidateDao.existsByIdentityNumber(candidate.getIdentityNumber())) {
-			return new ErrorResult("Geçersiz kimlik numarası!");
-		}
-		this.candidateDao.save(candidate);
-		return new SuccessResult("İş arayan kayıt edildi.");
+		return this.candidateService.add(candidate);
 	}
 
 	@Override
 	public Result registerEmployer(Employer employer) {
-		if(this.employerDao.existsByEmail(employer.getEmail())) {
-			return new ErrorResult("Email kullanılmaktadır.");
+		if(!employer.getPassword().equals(employer.getConfirmPassword())) {
+			return new ErrorResult("Şifreler uyuşmuyor!");
 		}
-		this.employerDao.save(employer);
-		return new SuccessResult("İş veren kayıt edildi.");
+		return this.employerService.add(employer);
 	}
 
 	@Override
 	public Result registerEmployee(Employee employee) {
-		if(this.employeeDao.existsByEmail(employee.getEmail())) {
-			return new ErrorResult("Email kullanılmaktadır.");
+		if(!employee.getPassword().equals(employee.getConfirmPassword())) {
+			return new ErrorResult("Şifreler uyuşmuyor!");
 		}
-		this.employeeDao.save(employee);
-		return new SuccessResult("Sistem çalışanı kayıt edildi.");
+		return this.employeeService.add(employee);
 	}
+	
+
 	
 	
 

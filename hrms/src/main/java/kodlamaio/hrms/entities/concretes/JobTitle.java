@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -30,9 +32,12 @@ public class JobTitle {
 	@Column(name = "id")
 	private int id;
 	
+	@NotNull
+	@NotBlank
 	@Column(name = "title")
 	private String title;
 	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "jobTitle")
 	private List<JobAdvertisement> jobAdvertisements; 
