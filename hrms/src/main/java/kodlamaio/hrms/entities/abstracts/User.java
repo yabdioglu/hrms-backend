@@ -15,6 +15,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -48,7 +50,12 @@ public abstract class User {
 	@Transient
 	private String confirmPassword;
 	
+	@JsonIgnore
 	@Column(name = "created_date")
 	private LocalDateTime createdDate = LocalDateTime.now();
+	
+	@JsonIgnore
+	@Column(name = "is_deleted")
+	private boolean isDeleted;
 
 }

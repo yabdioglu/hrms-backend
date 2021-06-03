@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -46,11 +47,17 @@ public class JobAdvertisement {
 	@Column(name = "application_deadline")
 	private LocalDate applicationDeadline;
 	
+	@JsonIgnore
 	@Column(name = "created_date")
 	private LocalDateTime createdDate = LocalDateTime.now();
 	
+	@JsonIgnore
 	@Column(name = "is_active")
 	private boolean isActive = true;
+	
+	@JsonIgnore
+	@Column(name = "is_deleted")
+	private boolean isDeleted;
 	
 	@ManyToOne()
 	@JoinColumn(name = "city_id", referencedColumnName = "city_id")
