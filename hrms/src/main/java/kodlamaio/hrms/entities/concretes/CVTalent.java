@@ -27,10 +27,10 @@ public class CVTalent {
 	private int id;
 	
 	
-	@ManyToOne
-	//@JsonIgnore
-	@JoinColumn(name = "cv_id")
-	private CurriculumVitae curriculumVitae;
+//	@ManyToOne
+////	//@JsonIgnore
+//	@JoinColumn(name = "cv_id")
+//	private CurriculumVitae curriculumVitae;
 	
 	@ManyToOne
 	//@JsonIgnore

@@ -1,7 +1,9 @@
 package kodlamaio.hrms.entities.concretes;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.Valid;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,31 +39,70 @@ public class CurriculumVitae {
 	@Column(name = "summary")
 	private String summary;
 	
+	@JsonIgnore
+	@Column(name = "created_date")
+	private LocalDateTime createdDate = LocalDateTime.now();
+	
+	@JsonIgnore
+	@Column(name = "is_deleted")
+	private boolean isDeleted;
+	
 	@ManyToOne()
 	@JoinColumn(name = "candidate_id")
 	private Candidate candidate;
 	
-
 	@Valid //CVLanguage da bulunan valid işlemleri için kullanıldı.
-	@OneToMany(mappedBy = "curriculumVitae")
+	@OneToMany(cascade = CascadeType.ALL, targetEntity = CVLanguage.class)
+	@JoinColumn(name = "cv_id")
 	private List<CVLanguage> cvLanguages;
 	
 	@Valid
-	@OneToMany(mappedBy = "curriculumVitae")
+	@OneToMany(cascade = CascadeType.ALL, targetEntity = CVTalent.class)
+	@JoinColumn(name = "cv_id")
 	private List<CVTalent> cvTalents;
 	
 	@Valid
-	@OneToMany(mappedBy = "curriculumVitae")
+	@OneToMany(cascade = CascadeType.ALL, targetEntity = CVExperience.class)
+	@JoinColumn(name = "cv_id")
 	private List<CVExperience> cvExperiences;
 
 	@Valid
-	@OneToMany(mappedBy = "curriculumVitae")
+	@OneToMany(cascade = CascadeType.ALL, targetEntity = CVSchool.class)
+	@JoinColumn(name = "cv_id")
 	private List<CVSchool> cvSchools;
 	
 	@Valid
-	@OneToMany(mappedBy = "curriculumVitae")
+	@OneToMany(cascade = CascadeType.ALL, targetEntity = CVWebAddress.class)
+	@JoinColumn(name = "cv_id")
 	private List<CVWebAddress> cvWebAddresses;
 	
+
+//	@Valid //CVLanguage da bulunan valid işlemleri için kullanıldı.
+//	//@OneToMany(cascade = CascadeType.ALL, targetEntity = CVLanguage.class)
+//	@OneToMany(mappedBy = "curriculumVitae")
+//	private List<CVLanguage> cvLanguages;
+//	//@JoinColumn(name = "cv_id")
+//	
+//	@Valid
+//	@OneToMany(cascade = CascadeType.ALL, targetEntity = CVLanguage.class)
+//	@JoinColumn(name = "cv_id")
+//	private List<CVTalent> cvTalents;
+//	
+//	@Valid
+//	@OneToMany(cascade = CascadeType.ALL, targetEntity = CVLanguage.class)
+//	@JoinColumn(name = "cv_id")
+//	private List<CVExperience> cvExperiences;
+//
+//	@Valid
+//	@OneToMany(cascade = CascadeType.ALL, targetEntity = CVLanguage.class)
+//	@JoinColumn(name = "cv_id")
+//	private List<CVSchool> cvSchools;
+//	
+//	@Valid
+//	@OneToMany(cascade = CascadeType.ALL, targetEntity = CVLanguage.class)
+//	@JoinColumn(name = "cv_id")
+//	private List<CVWebAddress> cvWebAddresses;
+//	
 	
 	
 

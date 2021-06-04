@@ -39,9 +39,9 @@ public class CVLanguage {
 	@JoinColumn(name = "language_id",  referencedColumnName = "id")
 	private Language language;
 	
-	@ManyToOne()
-	//@JsonIgnore
-	@JoinColumn(name = "cv_id")
-	private CurriculumVitae curriculumVitae;
+//	@ManyToOne()
+//	//@JsonIgnore
+//	@JoinColumn(name = "cv_id")
+//	private CurriculumVitae curriculumVitae;
 
 }

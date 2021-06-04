@@ -6,8 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -49,9 +47,9 @@ public class CVExperience {
 	@Column(name = "is_works")
 	private boolean isWorks;
 	
-	@ManyToOne
-	//@JsonIgnore
-	@JoinColumn(name = "cv_id")
-	private CurriculumVitae curriculumVitae;
+//	@ManyToOne
+////	//@JsonIgnore
+//	@JoinColumn(name = "cv_id")
+//	private CurriculumVitae curriculumVitae;
 
 }
