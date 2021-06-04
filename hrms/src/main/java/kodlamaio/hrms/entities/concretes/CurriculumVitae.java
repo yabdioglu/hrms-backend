@@ -77,32 +77,6 @@ public class CurriculumVitae {
 	private List<CVWebAddress> cvWebAddresses;
 	
 
-//	@Valid //CVLanguage da bulunan valid işlemleri için kullanıldı.
-//	//@OneToMany(cascade = CascadeType.ALL, targetEntity = CVLanguage.class)
-//	@OneToMany(mappedBy = "curriculumVitae")
-//	private List<CVLanguage> cvLanguages;
-//	//@JoinColumn(name = "cv_id")
-//	
-//	@Valid
-//	@OneToMany(cascade = CascadeType.ALL, targetEntity = CVLanguage.class)
-//	@JoinColumn(name = "cv_id")
-//	private List<CVTalent> cvTalents;
-//	
-//	@Valid
-//	@OneToMany(cascade = CascadeType.ALL, targetEntity = CVLanguage.class)
-//	@JoinColumn(name = "cv_id")
-//	private List<CVExperience> cvExperiences;
-//
-//	@Valid
-//	@OneToMany(cascade = CascadeType.ALL, targetEntity = CVLanguage.class)
-//	@JoinColumn(name = "cv_id")
-//	private List<CVSchool> cvSchools;
-//	
-//	@Valid
-//	@OneToMany(cascade = CascadeType.ALL, targetEntity = CVLanguage.class)
-//	@JoinColumn(name = "cv_id")
-//	private List<CVWebAddress> cvWebAddresses;
-//	
 	
 	
 
