@@ -13,6 +13,7 @@ public interface CurriculumVitaeService {
 	Result add(CurriculumVitae curriculumVitae);
 	DataResult<List<CurriculumVitae>> getAll();
 	DataResult<CurriculumVitae> imageUpload(int curriculumVitaeId, MultipartFile multipartFile) throws IOException;
+	DataResult<CurriculumVitae> getByCurriculumId(int id);
 	
 
 }

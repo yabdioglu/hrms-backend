@@ -54,6 +54,11 @@ public class CurriculumVitaesController {
 		return new ResponseEntity<>(this.curriculumVitaeService.imageUpload(curriculumVitaeId, multipartFile),HttpStatus.OK);
 	}
 	
+	@GetMapping("/getByCurriculumId")
+	public DataResult<CurriculumVitae> getByCurriculumId(@RequestParam int curriculumId){
+		return this.curriculumVitaeService.getByCurriculumId(curriculumId);
+	}
+	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public ErrorDataResult<Object> handleValidationException(MethodArgumentNotValidException exceptions){

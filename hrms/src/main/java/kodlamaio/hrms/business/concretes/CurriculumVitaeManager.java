@@ -91,4 +91,9 @@ public class CurriculumVitaeManager implements CurriculumVitaeService {
 		return new SuccessDataResult<>("Fotoğrafınız başarıyla kaydedildi.");
 	}
 
+	@Override
+	public DataResult<CurriculumVitae>getByCurriculumId(int id) {
+		return new SuccessDataResult<CurriculumVitae>(this.curriculumVitaeDao.findById(id).get(), "CV listelendi.");
+	}
+
 }
