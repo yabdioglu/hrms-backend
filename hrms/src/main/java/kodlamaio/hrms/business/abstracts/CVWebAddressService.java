@@ -4,10 +4,9 @@ import java.util.List;
 
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.Candidate;
+import kodlamaio.hrms.entities.concretes.CVWebAddress;
 
-public interface CandidateService {
-	Result add(Candidate candidate);
-	DataResult<List<Candidate>> getAll();
-	
+public interface CVWebAddressService {
+	Result add(CVWebAddress cvWebAddress);
+	DataResult<List<CVWebAddress>> getAll();
 }

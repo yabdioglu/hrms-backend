@@ -4,10 +4,10 @@ import java.util.List;
 
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.Candidate;
+import kodlamaio.hrms.entities.concretes.CVExperience;
 
-public interface CandidateService {
-	Result add(Candidate candidate);
-	DataResult<List<Candidate>> getAll();
-	
+public interface CVExperienceService {
+	Result add(CVExperience cvExperience);
+	DataResult<List<CVExperience>> getAll();
+
 }

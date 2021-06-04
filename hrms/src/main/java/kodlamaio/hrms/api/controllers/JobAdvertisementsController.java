@@ -14,6 +14,7 @@ import kodlamaio.hrms.business.abstracts.JobAdvertisementService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.JobAdvertisement;
+import kodlamaio.hrms.entities.dtos.JobAdvertisementDto;
 
 @RestController
 @RequestMapping("/api/jobAdvertisements")
@@ -25,32 +26,32 @@ public class JobAdvertisementsController {
 		this.jobAdvertisementService = jobAdvertisementService;
 	}
 	
-	@GetMapping("/getall")
-	public DataResult<List<JobAdvertisement>> getAll(){
+	@GetMapping("/getAll")
+	public DataResult<List<JobAdvertisementDto>> getAll(){
 		return this.jobAdvertisementService.getAll();
 	}
 	@PostMapping("/addJobAdvertisements")
-	public Result add(@RequestBody JobAdvertisement jobAdvertisement) {
+	public Result addJobAdvertisements(@RequestBody JobAdvertisement jobAdvertisement) {
 		return this.jobAdvertisementService.add(jobAdvertisement);
 	}
 	
-	@GetMapping("/getCompanyName")
-	public DataResult<List<JobAdvertisement>> getCompanyName(@RequestParam String companyName){
+	@GetMapping("/getByCompanyName")
+	public DataResult<List<JobAdvertisementDto>> getByCompanyName(@RequestParam String companyName){
 		return this.jobAdvertisementService.getByIsActiveTrueAndEmployer_CompanyName(companyName);
 	}
 	
-	@GetMapping("/getCreatedDate")
-	public DataResult<List<JobAdvertisement>> getByIsActiveTrueOrderByCreatedDate(){
+	@GetMapping("/getIsActiveAndOrderCreatedDate")
+	public DataResult<List<JobAdvertisementDto>> getIsActiveAndOrderCreatedDate(){
 		return this.jobAdvertisementService.getByIsActiveTrueOrderByCreatedDate();
 	}
 	
-	@PostMapping("/getIsActivity")
-	public Result getIsActivity(@RequestParam int jobAdvertisementId) {
+	@PostMapping("/IsActive")
+	public Result IsActive(@RequestParam int jobAdvertisementId) {
 		return this.jobAdvertisementService.getIsActivity(jobAdvertisementId);
 	}
 	
-	@GetMapping("/getAdvertisementWithEmployerDetails")
-	public Result getAdvertisementWithEmployerDetails() {
+	@GetMapping("/getAllIsActive")
+	public DataResult<List<JobAdvertisementDto>> getAllIsActive() {
 		return this.jobAdvertisementService.getAdvertisementWithEmployerDetails();
 	}
 	
