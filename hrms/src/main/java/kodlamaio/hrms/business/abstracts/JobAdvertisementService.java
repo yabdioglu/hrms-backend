@@ -9,7 +9,8 @@ import kodlamaio.hrms.entities.dtos.JobAdvertisementDto;
 
 public interface JobAdvertisementService {
 	Result add(JobAdvertisement jobAdvertisement);
-	DataResult<List<JobAdvertisementDto>> getAll();
+	DataResult<List<JobAdvertisement>> getAll();
+	DataResult<JobAdvertisement> getByJobAdvertisementId(int jobAdvertisementId);
 	
 	DataResult<List<JobAdvertisementDto>> getByIsActiveTrueAndEmployer_CompanyName(String companyName);
 	DataResult<List<JobAdvertisementDto>> getByIsActiveTrueOrderByCreatedDate();

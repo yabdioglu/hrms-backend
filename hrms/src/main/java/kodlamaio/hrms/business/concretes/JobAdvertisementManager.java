@@ -26,8 +26,8 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 	
 	
 	@Override
-	public DataResult<List<JobAdvertisementDto>> getAll() {
-		return new SuccessDataResult<List<JobAdvertisementDto>>(this.jobAdvertisementDao.getAll(), "Tüm iş ilanları listelendi.");
+	public DataResult<List<JobAdvertisement>> getAll() {
+		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.findAll(), "Tüm iş ilanları listelendi.");
 	}
 
 	@Override
@@ -62,5 +62,11 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 			return new SuccessResult("İlan aktif duruma getirildi.");
 		}
 		return new SuccessResult("İlan pasif duruma getirildi.");
+	}
+
+
+	@Override
+	public DataResult<JobAdvertisement> getByJobAdvertisementId(int jobAdvertisementId) {
+		return new SuccessDataResult<JobAdvertisement>(this.jobAdvertisementDao.findById(jobAdvertisementId).get(), "Belirli şirketin iş ilanları listelendi.");
 	}
 }

@@ -1,7 +1,6 @@
 package kodlamaio.hrms.entities.dtos;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,7 +13,7 @@ public class JobAdvertisementDto {
 	private String companyName;
 	private String jobTitleName;
 	private int numberOfOpenPositions;
-	private LocalDateTime createdDate;
+	private LocalDate createdDate;
 	private LocalDate applicationDeadline;
 
 }

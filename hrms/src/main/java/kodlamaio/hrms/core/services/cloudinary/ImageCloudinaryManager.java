@@ -24,9 +24,9 @@ public class ImageCloudinaryManager implements  ImageCloudinaryService{
 	
 	public ImageCloudinaryManager() {
 		
-		valuesMap.put("cloud_name", "cloud_name");
-		valuesMap.put("api_key", "api_key");
-		valuesMap.put("api_secret", "api_secret");
+		valuesMap.put("cloud_name", "duvi6miib");
+		valuesMap.put("api_key", "175277957118925");
+		valuesMap.put("api_secret", "zxLf9y9bmwcfJQ9od3T829XXh7s");
 		cloudinary = new Cloudinary(valuesMap);
 	}
 	
