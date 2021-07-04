@@ -9,6 +9,7 @@ import kodlamaio.hrms.entities.dtos.JobAdvertisementDto;
 
 public interface JobAdvertisementService {
 	Result add(JobAdvertisement jobAdvertisement);
+	Result confirmJobAd(int jobAdvertisementId);
 	DataResult<List<JobAdvertisement>> getAll();
 	DataResult<JobAdvertisement> getByJobAdvertisementId(int jobAdvertisementId);
 	

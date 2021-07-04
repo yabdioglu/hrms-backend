@@ -69,4 +69,13 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 	public DataResult<JobAdvertisement> getByJobAdvertisementId(int jobAdvertisementId) {
 		return new SuccessDataResult<JobAdvertisement>(this.jobAdvertisementDao.findById(jobAdvertisementId).get(), "Belirli şirketin iş ilanları listelendi.");
 	}
+
+
+	@Override
+	public Result confirmJobAd(int jobAdvertisementId) {
+		JobAdvertisement jobAdvertisement = this.jobAdvertisementDao.getOne(jobAdvertisementId);
+		jobAdvertisement.setConfirmed(true);
+		this.jobAdvertisementDao.save(jobAdvertisement);
+		return new SuccessResult("Job advertisement confirmed.");
+	}
 }

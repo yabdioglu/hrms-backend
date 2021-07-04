@@ -33,7 +33,7 @@ public class EmployeeManager implements EmployeeService {
 	@Override
 	public Result add(Employee employee) {
 		this.employeeDao.save(employee);
-		return new SuccessResult("İş veren kayıt edildi.");
+		return new SuccessResult("Sistem çalışanı kayıt edildi.");
 	}
 
 	

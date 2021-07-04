@@ -9,8 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -56,6 +56,10 @@ public class JobAdvertisement {
 	@Column(name = "is_deleted")
 	private boolean isDeleted;
 	
+	
+	@Column(name = "is_confirmed")
+	private boolean isConfirmed = false;
+	
 	@ManyToOne()
 	@JoinColumn(name = "city_id", referencedColumnName = "city_id")
 	private City city;
@@ -75,5 +79,9 @@ public class JobAdvertisement {
 	@ManyToOne()
 	@JoinColumn(name = "job_title_id")
 	private JobTitle jobTitle;
+	
+	@JsonIgnore
+	@OneToOne(mappedBy = "jobAdvertisement")
+	private JobAdvertisementConfirm jobAdvertisementConfirm;
 
 }
