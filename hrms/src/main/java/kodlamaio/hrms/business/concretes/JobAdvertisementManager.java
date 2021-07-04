@@ -78,4 +78,10 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 		this.jobAdvertisementDao.save(jobAdvertisement);
 		return new SuccessResult("Job advertisement confirmed.");
 	}
+
+
+	@Override
+	public DataResult<List<JobAdvertisement>> getByConfirmed() {
+		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.getByIsActiveTrueAndIsConfirmedTrue(), "Tüm iş ilanları listelendi.");
+	}
 }

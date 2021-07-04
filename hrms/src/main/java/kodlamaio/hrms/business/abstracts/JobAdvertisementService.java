@@ -11,6 +11,7 @@ public interface JobAdvertisementService {
 	Result add(JobAdvertisement jobAdvertisement);
 	Result confirmJobAd(int jobAdvertisementId);
 	DataResult<List<JobAdvertisement>> getAll();
+	DataResult<List<JobAdvertisement>> getByConfirmed();
 	DataResult<JobAdvertisement> getByJobAdvertisementId(int jobAdvertisementId);
 	
 	DataResult<List<JobAdvertisementDto>> getByIsActiveTrueAndEmployer_CompanyName(String companyName);

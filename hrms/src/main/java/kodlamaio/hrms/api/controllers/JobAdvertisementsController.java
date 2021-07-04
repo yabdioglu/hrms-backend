@@ -32,6 +32,11 @@ public class JobAdvertisementsController {
 	public DataResult<List<JobAdvertisement>> getAll(){
 		return this.jobAdvertisementService.getAll();
 	}
+	@GetMapping("/getByConfirmed")
+	public DataResult<List<JobAdvertisement>> getByConfirmed(){
+		return this.jobAdvertisementService.getByConfirmed();
+	}
+	
 	
 	@GetMapping("/getByJobAdvertisementId")
 	public DataResult<JobAdvertisement> getByJobAdvertisementId(@RequestParam int jobAdvertisementId){
