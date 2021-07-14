@@ -1,6 +1,5 @@
 package kodlamaio.hrms.entities.concretes;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,13 +26,11 @@ public class CVTalent {
 	private int id;
 	
 	
-//	@ManyToOne
-////	//@JsonIgnore
-//	@JoinColumn(name = "cv_id")
-//	private CurriculumVitae curriculumVitae;
+	@ManyToOne
+	@JoinColumn(name = "cv_id")
+	private CurriculumVitae curriculumVitae;
 	
 	@ManyToOne
-	//@JsonIgnore
 	@JoinColumn(name = "talent_id")
 	private Talent talent;
 	

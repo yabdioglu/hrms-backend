@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -35,6 +36,7 @@ public class Talent {
 	@Column(name = "talent_name")
 	private String talentName;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "talent")
 	private List<CVTalent> cvTalents;
 

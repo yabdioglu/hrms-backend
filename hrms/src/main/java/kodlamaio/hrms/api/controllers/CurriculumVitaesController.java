@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -61,6 +62,21 @@ public class CurriculumVitaesController {
 		return this.curriculumVitaeService.getByCurriculumId(curriculumId);
 	}
 	
+	@PutMapping("/updateSummary")
+	public ResponseEntity<?> updateSummary(@RequestParam String summary, @RequestParam int cvId){
+		return new ResponseEntity<>(this.curriculumVitaeService.updateSummary(summary, cvId),HttpStatus.OK);
+	}
+	
+	@PutMapping("/updateGithub")
+	public ResponseEntity<?> updateGithub(@RequestParam String github, @RequestParam int cvId){
+		return new ResponseEntity<>(this.curriculumVitaeService.updateGithub(github, cvId),HttpStatus.OK);
+	}
+	
+	@PutMapping("/updateLinkedIn")
+	public ResponseEntity<?> updateLinkedIn(@RequestParam String linkedin, @RequestParam int cvId){
+		return new ResponseEntity<>(this.curriculumVitaeService.updateLinkedIn(linkedin, cvId),HttpStatus.OK);
+	}
+	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public ErrorDataResult<Object> handleValidationException(MethodArgumentNotValidException exceptions){
@@ -68,7 +84,7 @@ public class CurriculumVitaesController {
 		for(FieldError fieldError : exceptions.getBindingResult().getFieldErrors()) {
 			validationErrors.put(fieldError.getField(), fieldError.getDefaultMessage());
 		}
-		ErrorDataResult<Object> errors = new ErrorDataResult<Object>(validationErrors, "Doğrulama hataları");
+		ErrorDataResult<Object> errors = new ErrorDataResult<Object>(validationErrors, "Validation errors");
 		return errors;
 	}
 

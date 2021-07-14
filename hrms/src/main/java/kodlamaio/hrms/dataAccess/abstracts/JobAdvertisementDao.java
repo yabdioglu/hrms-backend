@@ -11,8 +11,6 @@ import kodlamaio.hrms.entities.dtos.JobAdvertisementDto;
 
 public interface JobAdvertisementDao extends JpaRepository<JobAdvertisement, Integer> {
 	
-	//@Query("select new kodlamaio.hrms.entities.dtos.JobAdvertisementDto(e.companyName,j.jobTitle.title, j.numberOfOpenPositions, j.createdDate, j.applicationDeadline )"
-	//		+ "from Employer e inner join e.jobAdvertisements j")
 	List<JobAdvertisement> getByIsActiveTrueAndIsConfirmedTrue();
 	
 	@Query("select new kodlamaio.hrms.entities.dtos.JobAdvertisementDto(e.companyName,j.jobTitle.title, j.numberOfOpenPositions, j.createdDate, j.applicationDeadline )"

@@ -27,12 +27,12 @@ public class UserManager implements UserService {
 	
 	@Override
 	public DataResult<List<User>> getAll() {
-		return new SuccessDataResult<List<User>>(this.userDao.findAll(), "Data listelendi.");
+		return new SuccessDataResult<List<User>>(this.userDao.findAll(), "Data listed.");
 	}
 	
 	public Result existsByEmail(String email) {
 		if (userDao.existsByEmail(email)) {
-			return new ErrorResult("Email adresi kullanılmaktadır.");
+			return new ErrorResult("The email address is used.");
 		}
 		return new SuccessResult();
 	}

@@ -24,7 +24,7 @@ public class WorkPlaceManager implements WorkPlaceService {
 	
 	@Override
 	public DataResult<List<WorkPlace>> getAll() {
-		return new SuccessDataResult<List<WorkPlace>>(this.workPlaceDao.findAll(),"Data listelendi");
+		return new SuccessDataResult<List<WorkPlace>>(this.workPlaceDao.findAll(),"Data listed.");
 	}
 	
 

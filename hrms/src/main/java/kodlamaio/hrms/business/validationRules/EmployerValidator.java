@@ -19,7 +19,7 @@ public class EmployerValidator implements EmployerValidatorService{
         if(domain.equals(email.split("@")[1])){
             return new SuccessResult();
         }
-        return new ErrorResult("E-posta ile web sitenin domaini eşleşmiyor");
+        return new ErrorResult("E-mail does not match the domain of the web site!");
 	}
 
 }

@@ -32,7 +32,7 @@ public class AuthManager implements AuthService{
 	@Override
 	public Result registerCandidate(Candidate candidate) {
 		if(!candidate.getPassword().equals(candidate.getConfirmPassword())) {
-			return new ErrorResult("Şifreler uyuşmuyor!");
+			return new ErrorResult("Passwords don't match!");
 		}
 		return this.candidateService.add(candidate);
 	}
@@ -40,7 +40,7 @@ public class AuthManager implements AuthService{
 	@Override
 	public Result registerEmployer(Employer employer) {
 		if(!employer.getPassword().equals(employer.getConfirmPassword())) {
-			return new ErrorResult("Şifreler uyuşmuyor!");
+			return new ErrorResult("Passwords don't match!");
 		}
 		return this.employerService.add(employer);
 	}
@@ -48,7 +48,7 @@ public class AuthManager implements AuthService{
 	@Override
 	public Result registerEmployee(Employee employee) {
 		if(!employee.getPassword().equals(employee.getConfirmPassword())) {
-			return new ErrorResult("Şifreler uyuşmuyor!");
+			return new ErrorResult("Passwords don't match!");
 		}
 		return this.employeeService.add(employee);
 	}

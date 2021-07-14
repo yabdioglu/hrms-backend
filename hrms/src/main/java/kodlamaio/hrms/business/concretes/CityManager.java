@@ -27,12 +27,12 @@ public class CityManager implements CityService {
 	@Override
 	public Result addCity(City city) {
 		this.cityDao.save(city);
-		return new SuccessResult("Şehir eklendi.");
+		return new SuccessResult("City added");
 	}
 
 	@Override
 	public DataResult<List<City>> getAll() {
-		return new SuccessDataResult<List<City>>(this.cityDao.findAll(), "Data listelendi.");
+		return new SuccessDataResult<List<City>>(this.cityDao.findAll(), "Data listed.");
 	}
 
 }

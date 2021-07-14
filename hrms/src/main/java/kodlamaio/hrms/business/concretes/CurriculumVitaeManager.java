@@ -16,7 +16,6 @@ import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.CurriculumVitaeDao;
 import kodlamaio.hrms.entities.concretes.CurriculumVitae;
-
 @Component
 public class CurriculumVitaeManager implements CurriculumVitaeService {
 
@@ -33,12 +32,12 @@ public class CurriculumVitaeManager implements CurriculumVitaeService {
 	@Override
 	public Result add(CurriculumVitae curriculumVitae) {
 		this.curriculumVitaeDao.save(curriculumVitae);
-		return new SuccessResult("CV başarıyla eklendi.");
+		return new SuccessResult("CV successfully added.");
 	}
 
 	@Override
 	public DataResult<List<CurriculumVitae>> getAll() {
-		return new SuccessDataResult<List<CurriculumVitae>>(this.curriculumVitaeDao.findAll(), "CV listelendi");
+		return new SuccessDataResult<List<CurriculumVitae>>(this.curriculumVitaeDao.findAll(), "CV listed.");
 	}
 	
 	@Override
@@ -48,12 +47,36 @@ public class CurriculumVitaeManager implements CurriculumVitaeService {
 		var result = this.imageCloudinaryService.imageUpload(multipartFile);
 		curriculumVitae.setPhotoLink(result.getData().get("url").toString());
 		this.curriculumVitaeDao.save(curriculumVitae);
-		return new SuccessDataResult<>("Fotoğrafınız başarıyla kaydedildi.");
+		return new SuccessDataResult<>("Your photo was successfully saved.");
 	}
 
 	@Override
 	public DataResult<CurriculumVitae>getByCurriculumId(int id) {
-		return new SuccessDataResult<CurriculumVitae>(this.curriculumVitaeDao.findById(id).get(), "CV listelendi.");
+		return new SuccessDataResult<CurriculumVitae>(this.curriculumVitaeDao.findById(id).get(), "CV listed.");
+	}
+
+	@Override
+	public Result updateSummary(String summary, int curriculumVitaeId) {
+		CurriculumVitae curriculumVitae = this.curriculumVitaeDao.findById(curriculumVitaeId).get();
+		curriculumVitae.setSummary(summary);
+		this.curriculumVitaeDao.save(curriculumVitae);
+		return new SuccessResult("Summary updated");
+	}
+	
+	@Override
+	public Result updateGithub(String github, int curriculumVitaeId) {
+		CurriculumVitae curriculumVitae = this.curriculumVitaeDao.findById(curriculumVitaeId).get();
+		curriculumVitae.setGithubLink(github);
+		this.curriculumVitaeDao.save(curriculumVitae);
+		return new SuccessResult("Github updated");
+	}
+	
+	@Override
+	public Result updateLinkedIn(String linkedin, int curriculumVitaeId) {
+		CurriculumVitae curriculumVitae = this.curriculumVitaeDao.findById(curriculumVitaeId).get();
+		curriculumVitae.setLinkedInLink(linkedin);
+		this.curriculumVitaeDao.save(curriculumVitae);
+		return new SuccessResult("LinkedIn updated");
 	}
 
 }

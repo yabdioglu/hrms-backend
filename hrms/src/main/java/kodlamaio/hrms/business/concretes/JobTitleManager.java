@@ -33,7 +33,7 @@ public class JobTitleManager implements JobTitleService{
 	@Override
 	public Result add(JobTitle jobTitle) {
 		this.jobTitleDao.save(jobTitle);
-		return new SuccessResult("İş pozisyonu başarıyla eklendi.");
+		return new SuccessResult("Job title successfully added.");
 		
 	}
 

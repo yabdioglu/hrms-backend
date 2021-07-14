@@ -38,7 +38,7 @@ public class CandidateManager implements CandidateService{
 	
 	@Override
 	public DataResult<List<Candidate>> getAll() {
-		return new SuccessDataResult<List<Candidate>>(this.candidateDao.findAll(), "Data listelendi.");
+		return new SuccessDataResult<List<Candidate>>(this.candidateDao.findAll(), "Data listed.");
 	}
 
 
@@ -49,12 +49,12 @@ public class CandidateManager implements CandidateService{
 			return result;
 		}
 		this.candidateDao.save(candidate);
-		return new SuccessResult("İş arayan kayıt edildi.");
+		return new SuccessResult("Candidate registered.");
 	}
 	
 	public Result identityNumberExists(String identityNumber){
         if (candidateDao.existsByIdentityNumber(identityNumber)){
-        	return new ErrorResult("Kimlik numarası kullanılmaktadır.");
+        	return new ErrorResult("Identification number is used.");
         }
         return new SuccessResult();
     }

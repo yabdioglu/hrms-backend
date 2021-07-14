@@ -14,7 +14,7 @@ public class CandidateValidator implements CandidateValidatorService{
 		if(identityNumber.length() == 11) {
 			return new SuccessResult();
 		}
-		return new ErrorResult("Kimlik numarası 11 haneli olmalı!");
+		return new ErrorResult("The ID number must be 11 digits!");
 	}
 
 }

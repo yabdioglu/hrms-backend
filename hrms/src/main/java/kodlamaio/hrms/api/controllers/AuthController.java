@@ -58,7 +58,7 @@ public class AuthController {
 		for(FieldError fieldError : exceptions.getBindingResult().getFieldErrors()) {
 			validationErrors.put(fieldError.getField(), fieldError.getDefaultMessage());
 		}
-		ErrorDataResult<Object> errors = new ErrorDataResult<Object>(validationErrors, "Doğrulama hataları");
+		ErrorDataResult<Object> errors = new ErrorDataResult<Object>(validationErrors, "Validation errors");
 		return errors;
 	}
 	

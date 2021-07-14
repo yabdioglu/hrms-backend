@@ -27,30 +27,30 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 	
 	@Override
 	public DataResult<List<JobAdvertisement>> getAll() {
-		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.findAll(), "Tüm iş ilanları listelendi.");
+		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.findAll(), "Job Advertisements listed");
 	}
 
 	@Override
 	public Result add(JobAdvertisement jobAdvertisement) {
 		this.jobAdvertisementDao.save(jobAdvertisement);
-		return new SuccessResult("İş ilanı eklendi.");
+		return new SuccessResult("Job Advertisement added");
 	}
 
 
 	@Override
 	public DataResult<List<JobAdvertisementDto>> getByIsActiveTrueAndEmployer_CompanyName(String companyName) {
-		return new SuccessDataResult<List<JobAdvertisementDto>>(this.jobAdvertisementDao.getByIsActiveTrueAndCompanyName(companyName), "Belirli şirketin aktif iş ilanları listelendi.");
+		return new SuccessDataResult<List<JobAdvertisementDto>>(this.jobAdvertisementDao.getByIsActiveTrueAndCompanyName(companyName), "Job Advertisements listed");
 	}
 
 
 	@Override
 	public DataResult<List<JobAdvertisementDto>> getByIsActiveTrueOrderByCreatedDate() {
-		return new SuccessDataResult<List<JobAdvertisementDto>>(this.jobAdvertisementDao.getByIsActiveTrueOrderByCreatedDate(), "Aktif iş ilanları oluşturulma tarihine göre listelendi.");
+		return new SuccessDataResult<List<JobAdvertisementDto>>(this.jobAdvertisementDao.getByIsActiveTrueOrderByCreatedDate(), "Active job advertisement were listed by date of creation.");
 	}
 
 	@Override
 	public DataResult<List<JobAdvertisementDto>> getAdvertisementWithEmployerDetails() {
-		return new SuccessDataResult<List<JobAdvertisementDto>>(this.jobAdvertisementDao.getAdvertisementWithEmployerDetails(), "Data listelendi.");
+		return new SuccessDataResult<List<JobAdvertisementDto>>(this.jobAdvertisementDao.getAdvertisementWithEmployerDetails(), "Data listed.");
 	}
 
 	@Override
@@ -59,15 +59,15 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 		jobAdvertisement.setActive(!jobAdvertisement.isActive());;
 		this.jobAdvertisementDao.save(jobAdvertisement);
 		if(jobAdvertisement.isActive()) {
-			return new SuccessResult("İlan aktif duruma getirildi.");
+			return new SuccessResult("The ad has been activated.");
 		}
-		return new SuccessResult("İlan pasif duruma getirildi.");
+		return new SuccessResult("The ad has been inactivated.");
 	}
 
 
 	@Override
 	public DataResult<JobAdvertisement> getByJobAdvertisementId(int jobAdvertisementId) {
-		return new SuccessDataResult<JobAdvertisement>(this.jobAdvertisementDao.findById(jobAdvertisementId).get(), "Belirli şirketin iş ilanları listelendi.");
+		return new SuccessDataResult<JobAdvertisement>(this.jobAdvertisementDao.findById(jobAdvertisementId).get(), "The specific company's job ads were listed.");
 	}
 
 
@@ -82,6 +82,6 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 
 	@Override
 	public DataResult<List<JobAdvertisement>> getByConfirmed() {
-		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.getByIsActiveTrueAndIsConfirmedTrue(), "Tüm iş ilanları listelendi.");
+		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.getByIsActiveTrueAndIsConfirmedTrue(), "Job Advertisements listed.");
 	}
 }

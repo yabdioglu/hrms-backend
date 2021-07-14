@@ -14,6 +14,8 @@ public interface CurriculumVitaeService {
 	DataResult<List<CurriculumVitae>> getAll();
 	DataResult<CurriculumVitae> imageUpload(int curriculumVitaeId, MultipartFile multipartFile) throws IOException;
 	DataResult<CurriculumVitae> getByCurriculumId(int id);
-	
+	Result updateSummary(String summary, int cvId);
+	Result updateGithub(String github, int cvId);
+	Result updateLinkedIn(String linkedin, int cvId);
 
 }

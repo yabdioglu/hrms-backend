@@ -15,7 +15,7 @@ public class MernisServiceAdapter implements UserCheckService {
 	public Result checkIfRealPerson(Long identityNumber, String firstName, String lastName, int birtDate) {
 		FakeMernisService fakeMernisService = new FakeMernisService();
 		if(!fakeMernisService.check(identityNumber, firstName, lastName, birtDate)) {
-			return new ErrorResult("Geçersiz kullanıcı girişi!");
+			return new ErrorResult("Invalid user login!");
 		}
 		return new SuccessResult();
 	}

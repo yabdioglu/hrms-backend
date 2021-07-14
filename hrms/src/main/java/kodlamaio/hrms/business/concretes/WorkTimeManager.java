@@ -24,6 +24,6 @@ private WorkTimeDao workTimeDao;
 	
 	@Override
 	public DataResult<List<WorkTime>> getAll() {
-		return new SuccessDataResult<List<WorkTime>>(this.workTimeDao.findAll(),"Data listelendi");
+		return new SuccessDataResult<List<WorkTime>>(this.workTimeDao.findAll(),"Data listed.");
 	}
 }

@@ -36,6 +36,12 @@ public class CurriculumVitae {
 	@Column(name = "photo_link")
 	private String photoLink;
 	
+	@Column(name = "github_link")
+	private String githubLink;
+	
+	@Column(name = "linkedin_link")
+	private String linkedInLink;
+	
 	@Column(name = "summary")
 	private String summary;
 	
@@ -52,18 +58,15 @@ public class CurriculumVitae {
 	private Candidate candidate;
 	
 	@Valid //CVLanguage da bulunan valid işlemleri için kullanıldı.
-	@OneToMany(cascade = CascadeType.ALL, targetEntity = CVLanguage.class)
-	@JoinColumn(name = "cv_id")
+	@OneToMany(mappedBy = "curriculumVitae")
 	private List<CVLanguage> cvLanguages;
 	
 	@Valid
-	@OneToMany(cascade = CascadeType.ALL, targetEntity = CVTalent.class)
-	@JoinColumn(name = "cv_id")
+	@OneToMany(mappedBy = "curriculumVitae")
 	private List<CVTalent> cvTalents;
 	
 	@Valid
-	@OneToMany(cascade = CascadeType.ALL, targetEntity = CVExperience.class)
-	@JoinColumn(name = "cv_id")
+	@OneToMany(mappedBy = "curriculumVitae")
 	private List<CVExperience> cvExperiences;
 
 	@Valid
@@ -71,12 +74,6 @@ public class CurriculumVitae {
 	@JoinColumn(name = "cv_id")
 	private List<CVSchool> cvSchools;
 	
-	@Valid
-	@OneToMany(cascade = CascadeType.ALL, targetEntity = CVWebAddress.class)
-	@JoinColumn(name = "cv_id")
-	private List<CVWebAddress> cvWebAddresses;
-	
-
 	
 	
 
